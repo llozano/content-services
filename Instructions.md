@@ -1,7 +1,4 @@
-# Giphy Search API
-
-### Introduction
-Giphy Search API allows to search for up to three `gifs` with multiple query terms.
+# Instructions
 
 
 ### Run the microservice
@@ -31,14 +28,14 @@ Building the docker image with a tag. The tag of the image in this case will be 
 ```bash
 docker build -t inter/vue-giphy . 
 ````
-_Don't forget the dot (.) ------^_
+_Don't forget the dot (.) --------^_
 
 
 Launch the container tagged as `inter/vue-giphy`
 ```bash
 docker run -p 8080:8080 inter/vue-giphy . 
 ````
-_Don't forget the dot (.) ------^_
+_Don't forget the dot (.) --------^_
 
 ### Search for giphy's
 Run `curl` command in a terminal window.
