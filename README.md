@@ -1,12 +1,14 @@
 # Giphy Search API
 
 ## Introduction
-Giphy Search API allows to search for multiple `gifs` by passing one to many search terms or phrases.
 
-More on how to run this project follow these [Instructions link](Instructions.md).
+Giphy Search API allows to search for one or many `gifs` by matching one or many search terms or phrases.
+
+More on how to run this project follow these [Instructions](Instructions.md).
 
 
 ### Search
+
 Searches for one or many gifs returning up to three results per match.
 
 *URL*: `/api/{version}/giphy/query`

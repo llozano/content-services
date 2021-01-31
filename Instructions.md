@@ -1,17 +1,39 @@
 # Instructions
 
-
 ### Run the microservice
+
 To run the microservice, open a terminal and go to the directory where the project recides.
 
-#### Install dependencies for the first run
+_Example_
+
+```bash
+cd ~/development/content-services
+```
+
+#### Install dependencies before out first run
+
 Run the following command in a terminal window.
 
 ```bash
 ./gradlew assemble --refresh-dependencies
 ````
 
-### Running the microservice
+#### To build
+
+To build, run the follow command in a termina window.
+
+```bash
+./gradlew build
+````
+
+You will see output similar to the following:
+```
+BUILD SUCCESSFUL in 7s
+7 actionable tasks: 7 up-to-date
+```
+
+#### Running the microservice
+
 Run the following command in a terminal window.
 
 ```bash
@@ -19,31 +41,36 @@ Run the following command in a terminal window.
 ````
 
 ### Run with docker
-Build the project `before` running docker
+
+1. Build the project `before` running docker.
 ```bash
 ./gradlew build
 ````
 
-Building the docker image with a tag. The tag of the image in this case will be `inter/vue-giphy`.
+2. Building the docker image with a tag. The tag of the image in this case will be `inter/vue-giphy`.
+
 ```bash
 docker build -t inter/vue-giphy . 
 ````
 _Don't forget the dot (.) --------^_
 
 
-Launch the container tagged as `inter/vue-giphy`
+3. Launch the container tagged as `inter/vue-giphy`.
+
 ```bash
 docker run -p 8080:8080 inter/vue-giphy . 
 ````
 _Don't forget the dot (.) --------^_
 
 ### Search for giphy's
+
 Run `curl` command in a terminal window.
 ```bash
 curl --request GET 'localhost:8080/api/v1/giphy/query?searchTerm=ronaldinho&searchTerm=dinho'
 ````
 
 ### Service health check
+
 Run `curl` command in a terminal window.
 ```bash
 curl 'localhost:8080/api/actuator/health'
