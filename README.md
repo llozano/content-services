@@ -6,7 +6,7 @@ Giphy Search API allows to search for up to three `gifs` with multiple query ter
 More on how to run this project [here link](Instructions.md).
 
 
-###Search
+### Search
 Searches for one or many gifs returning up to three results per match.
 
 *URL*: `/api/{version}/giphy/query`
@@ -16,20 +16,20 @@ Searches for one or many gifs returning up to three results per match.
 *Auth required*: `NO`
 
 
-####Success Response
+#### Success Response
 
 *Code*: `200 OK`
 
 
-####Example
+#### Example
 
-#####HTTP Request
+##### HTTP Request
 
 ```bash
 curl --request GET 'localhost:8080/api/v1/giphy/query?searchTerm=ronaldinho&searchTerm=dinho'
 ```
 
-#####HTTP Response
+##### HTTP Response
 
 ```json
 {
