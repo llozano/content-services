@@ -4,9 +4,15 @@ plugins {
 	id 'java'
 }
 
+description = 'Search API for gifs'
 group = 'com.interview'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+targetCompatibility = '11'
+
+jar { 
+    archiveBaseName = 'interview.jar' 
+}
 
 configurations {
 	compileOnly {
@@ -31,10 +37,12 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	compile 'org.apache.commons:commons-text:1.9'
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	testCompile group: 'junit', name: 'junit', version: '4.13.1'
+	
 }
 
 test {
