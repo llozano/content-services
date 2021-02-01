@@ -5,7 +5,16 @@ import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class TestUtils {
+	
+	
+	public static ObjectMapper objectMapper;
+	
+	static {
+		objectMapper = new ObjectMapper();
+	}
 	
 	/**
 	 * Read resource from folder.

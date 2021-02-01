@@ -29,12 +29,11 @@ public class GiphyServiceTest {
 	@Qualifier("giphyRestTemplate")
 	private RestTemplate restTemplate;
 	
-	@InjectMocks
-	private GiphyService giphyService;
-	
 	@Qualifier("threadPollTaskExcutor")
 	private Executor executor = Executors.newFixedThreadPool(2);
 	
+	@InjectMocks
+	private GiphyService giphyService; 
 	
 	@BeforeEach
 	public void setup() throws Exception {
@@ -57,4 +56,5 @@ public class GiphyServiceTest {
 		
 		assertThat(response).isNotNull();
 	}
+
 }
