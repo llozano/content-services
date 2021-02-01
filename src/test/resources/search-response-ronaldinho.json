@@ -1,0 +1,13 @@
+{
+  "search_term" : "ronaldinho",
+  "gifs" : [ {
+    "url" : "https://giphy.com/gifs/nss-sports-soccer-milan-3ov9kae2vVoWjkpMje",
+    "gif_id" : "3ov9kae2vVoWjkpMje"
+  }, {
+    "url" : "https://giphy.com/gifs/nikefootball-football-soccer-1Ai6ZCMr24Xn3QRP4v",
+    "gif_id" : "1Ai6ZCMr24Xn3QRP4v"
+  }, {
+    "url" : "https://giphy.com/gifs/fcbarcelona-goal-ronaldinho-FEpLruiKc7udq",
+    "gif_id" : "FEpLruiKc7udq"
+  } ]
+}

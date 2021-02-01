@@ -2,7 +2,9 @@ package com.interview.contentservices.giphy.service;
 
 import java.net.URI;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
@@ -48,17 +50,37 @@ public class GiphyService {
 		
 		log.info("searchTerms: {}", searchTerms);
 		
+		// Return empty results if there aren't any search terms
 		if (searchTerms == null || searchTerms.isEmpty()) {
 			return GiphySearviceResponse.builder()
 					.data(Collections.emptyList())
 					.build();
 		}
 		
-		List<CompletableFuture<SearchResponse>> futures = searchTerms.stream()
+		// Map terms to keep distinct values
+		final Map<String, String> uniqueTerms = searchTerms.stream()
+				.filter(searchTerm -> searchTerm != null && searchTerm.trim().length() > 0)
+				.collect(
+					LinkedHashMap::new,                           
+					(map, item) -> map.put(item.trim(), item.trim()),
+					Map::putAll
+				);
+		
+		// Return empty results if Map is empty
+		if (uniqueTerms.isEmpty()) {
+			return GiphySearviceResponse.builder()
+					.data(Collections.emptyList())
+					.build();
+		}
+		
+		// Create futures
+		List<CompletableFuture<SearchResponse>> futures = uniqueTerms.entrySet().stream()
+				.map(entry -> entry.getValue())
 				.filter(searchTerm -> searchTerm != null && searchTerm.trim().length() > 0)
                 .map(searchTerm -> executeSearch(searchTerm))
                 .collect(Collectors.toList());
 
+		// Collect search results
 		List<SearchResponse> result = futures.stream()
                 .map(CompletableFuture::join)
                 .collect(Collectors.toList());
@@ -79,7 +101,7 @@ public class GiphyService {
 	 */
 	private CompletableFuture<SearchResponse> executeSearch(String q) {
 
-        String searchTerm = q;
+        String searchTerm = new String(q);
         return CompletableFuture.supplyAsync(() -> {
         	try {
         		final URI url = UriComponentsBuilder.fromUriString(giphyApiUrl)  

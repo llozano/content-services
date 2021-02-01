@@ -15,4 +15,4 @@ ENV JAVA_OPTS -Xmx8g \
 
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/home/giphy/app.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","/home/giphy/app.jar"]

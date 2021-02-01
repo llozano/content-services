@@ -2,8 +2,8 @@ package com.interview.contentservices.giphy.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -45,7 +45,7 @@ public class SearchResponse implements Serializable {
 	public static class SearchResponseBuilder {
 		public SearchResponseBuilder gifts(Gif[] gifts) {
 			
-			this.gifs = new TreeSet<Gif>();
+			this.gifs = new LinkedHashSet<Gif>();
 			
 			// SPEC: Always return exactly 3 results or 0 results if there are less than 3 available per search term
 			if (gifts != null && gifts.length >= 3) {
